@@ -1,3 +1,8 @@
+### _Files_   
+blinky_pt1 - basic code implementation  
+blinky_pt2 - with preprocessor directive #define
+
+### _Process flow_
 1) Identifying the address of ports and data registers.   
 	`Pin 13 - PORTB 5th bit       `
 
@@ -62,3 +67,8 @@
       }
     }
     ```
+
+### _References_
+- [Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf (microchip.com)](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf)   
+- [Bare-Metal MCU #1 - Intro to registers - YouTube](https://www.youtube.com/watch?v=tBq3sO1Z-7o&list=PLNyfXcjhOAwOF-7S-ZoW2wuQ6Y-4hfjMR)   
+- [Bare-Metal MCU #2 - Set Registers by Memory Address (youtube.com)](https://www.youtube.com/watch?v=W8REqKlGzDY&list=PLNyfXcjhOAwOF-7S-ZoW2wuQ6Y-4hfjMR&index=2) 
