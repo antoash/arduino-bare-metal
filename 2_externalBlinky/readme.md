@@ -8,6 +8,7 @@
 externalBlinky_pt1 - basic implementation  
 externalBlinky_pt2 - implementation using bitwise operations
 
+## Bitwise Operations
 _Variables that are used in the following examples._
 ```C
 int x = 5; //  0b00000101
@@ -101,6 +102,14 @@ Get the status of the 5th bit.
 pin5_status = (reg & (1 << 5)) >> 5
 ```
 Returns 0/1 depending on the status.
+
+## Byte Splitting
+Split 16 bits into two 8 bit words
+```c
+high_byte = reg >> 8 & 0xFF;
+low_byte = reg & 0xFF;
+```
+
 
 ## References:
 [C bitwise operators 🔣 (youtube.com)](https://www.youtube.com/watch?v=BGeOwlIGRGI)
