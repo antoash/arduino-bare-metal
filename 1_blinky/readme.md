@@ -4,14 +4,16 @@ blinky_pt2 - with preprocessor directive #define
 
 ### _Process flow_
 1) Identifying the address of ports and data registers.   
-	`Pin 13 - PORTB 5th bit       `
-
-	`PORTB (data register, HIGH=1, LOW=0) - 0x25, bit 5 HIGH     `           
-	
-    `DDRB (data direction, input=0, output=1) - 0x24, bit 5 HIGH`                          
-	
-    `PINB (Port B input pins) - 0x23 (read only)             `        
-2) Understand referencing and dereferencing in pointers:      
+    x - A, B, C, D      
+   **_DDRx_** (Data Direction Register)        
+	&emsp;Set a bit HIGH for the corresponding pin to function as OUTPUT. Setting the bit LOW corresponds to INPUT mode.    
+   **_PORTx_** (Port X Data Register)            
+	&emsp;if pin in output mode, setting 1 to a bit makes the pin go HIGH while setting 0, will do the opposite.     
+	&emsp;if  pin in input mode, 1 will enable the pull up resistor and 0 will enable the pull down register.    
+   **_PINx_** (Input Pin Address register)       
+	&emsp;It stores the current status of the pin corresponding to the port.    
+	&emsp;Setting logic 1 will toggle the value in the corresponding pin.      
+2) Understand referencing and dereferencing in pointers:       
 
 ```c                  
    int a = 89;                                                         
