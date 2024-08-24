@@ -58,7 +58,12 @@
             
    Send Data Function:         
    &emsp;While UDRE1 != 1, loop         
-   &emsp;Set the UDR0 register with data.         
+   &emsp;Set the UDR0 register with data.
+
+   Send String Function:    
+   &emsp;Pass string as an argument.                                          
+   &emsp;While string != NULL character, use send data function to send each letter.    
+   &emsp;Increment the string literal to move to the next letter in the string.     
             
 ### References         
 - [11A. Serial Communications -- USART - YouTube](https://www.youtube.com/watch?v=W5xt6w5EMP0)         

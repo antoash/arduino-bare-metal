@@ -22,22 +22,34 @@ void UARTinit() {
 }
 
 void sendData(uint8_t data) {
-  while (!(ctrl_reg_A | (1 << 5)));  // Loop until data register is empty
+  while (!(ctrl_reg_A & (1 << 5)));  // Loop until data register is empty
 
   data_reg = data;
-   
+}
+
+void sendString(uint8_t *str) {
+  
+  while(*str != '\0') {
+    sendData(*str);
+    str++;
+  }
 }
 
 int main() {
 
-  
   UARTinit();
 
-  while (1) {
-    sendData('A');
-    sendData('\r');
-    sendData('\n');
-    _delay_ms(300);
-  }
+  uint8_t buffer[20] = "Hello there \r\n";
+
+  sendData('h');
+  sendData('e');
+  sendData('l');
+  sendData('l');
+  sendData('o');
+  sendData('\r');
+  sendData('\n');
+
+  sendString("Check if this function is working! \r\nHopefully it is hahaha! \r\n");
+  sendString("\r\nYou can now send strings thru UART yay!");
 
 }
