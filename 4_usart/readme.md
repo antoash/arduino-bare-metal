@@ -64,7 +64,11 @@
    &emsp;Pass string as an argument.                                          
    &emsp;While string != NULL character, use send data function to send each letter.    
    &emsp;Increment the string literal to move to the next letter in the string.     
-            
+
+   Receive Bits Function:      
+   &emsp;While receiver buffer is empty (data register has been read). Loop   
+   &emsp;When unread data is available. Return bit in data register.                                            
+
 ### References         
 - [11A. Serial Communications -- USART - YouTube](https://www.youtube.com/watch?v=W5xt6w5EMP0)         
 - [UART: A Hardware Communication Protocol Understanding Universal Asynchronous Receiver/Transmitter | Analog Devices](https://www.analog.com/en/resources/analog-dialogue/articles/uart-a-hardware-communication-protocol.html)

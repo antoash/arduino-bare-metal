@@ -1,10 +1,10 @@
 #define baud_rate     0x0067
 #define ubrr0_l       *((volatile uint8_t *) 0xC4)
 #define ubrr0_h       *((volatile uint8_t *) 0xC5)
-#define ctrl_reg_A    *((volatile uint8_t *) 0xC0)  
-#define ctrl_reg_B    *((volatile uint8_t *) 0xC1)
-#define ctrl_reg_C    *((volatile uint8_t *) 0xC2)
-#define data_reg      *((volatile uint8_t *) 0xC6)
+#define ctrl_reg_A    *((volatile uint8_t *) 0xC0)  // USCR0A
+#define ctrl_reg_B    *((volatile uint8_t *) 0xC1)  // USCR0B
+#define ctrl_reg_C    *((volatile uint8_t *) 0xC2)  // USCR0C
+#define data_reg      *((volatile uint8_t *) 0xC6)  // UDR0
 
 void UARTinit() {
   uint8_t high_byte = (baud_rate >> 8) & 0xFF;
@@ -35,11 +35,24 @@ void sendString(uint8_t *str) {
   }
 }
 
+uint8_t receiveData(void) {
+
+  // Exit loop when RXC0 bit = 0 
+
+  while(!(ctrl_reg_A & (1 << 7))) {
+    _delay_ms(1000);
+  }
+
+  return data_reg;
+
+}
+
+
 int main() {
 
+  uint8_t tx_buffer[20] = "Hello there \r\n";
+  uint8_t rx_buffer;
   UARTinit();
-
-  uint8_t buffer[20] = "Hello there \r\n";
 
   sendData('h');
   sendData('e');
@@ -48,8 +61,15 @@ int main() {
   sendData('o');
   sendData('\r');
   sendData('\n');
-
+  sendString(tx_buffer);
   sendString("Check if this function is working! \r\nHopefully it is hahaha! \r\n");
-  sendString("\r\nYou can now send strings thru UART yay!");
+  sendString("\r\nYou can now send strings thru UART yay!\r\n");
+
+  sendString("Enter Data:\r\n");
+
+  while (1) {
+    rx_buffer = receiveData();
+    sendData(rx_buffer);
+  }
 
 }
