@@ -67,7 +67,7 @@
    - Prescalar = 256                            
    - Frequency = ${16M\over256} = 0.0625MHz$             
    - Time period =  16us                      
-   - Max time duration before counter resets: ${16us \over 65536} = 1.048s > 500ms$           
+   - Max time duration before counter resets: ${16us \times 65536} = 1.048s > 500ms$           
    - This configuration enables the counter to go from 0 to 65536 in 1.048 seconds.                         
    
    Finding the number of counter ticks to reach 500ms:               
